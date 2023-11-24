@@ -30,15 +30,16 @@ namespace Shop
             Apple apple = new Apple();
             BrefActive bref = new BrefActive();
         
-            Goods[] gooods = { bref, apple};
-            foreach (Goods item in gooods) 
-                {
-                
-                    apple.MenuPrint();
-                    bref.MenuPrint(); //не получается сделать так, чтобы срабатывало сразу два подряд товара( наверное нужны потоки)
-                }
-                
-              
+            Goods[] gooods = { bref, apple };
+
+            Console.WriteLine("Выберите товар");
+
+            int number = Convert.ToInt32(Console.ReadLine());
+            switch(number)
+            {
+                case 8: gooods[0].MenuPrint(); break;
+                case 9: gooods[1].MenuPrint(); break;
+            }
 
 
         }
