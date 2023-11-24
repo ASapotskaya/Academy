@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
 namespace Shop
 {
     public abstract class Сhemicals : Goods
@@ -39,6 +39,7 @@ namespace Shop
         public override void Print()
         {
             base.Print();
+            Console.Clear();
             Console.Write($" Тип бытовой химии: {TypeOfChemicals}.");
         }
 

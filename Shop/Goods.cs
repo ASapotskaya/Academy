@@ -128,7 +128,6 @@ namespace Shop
         {
             Console.Clear();
             Console.Write($"Номер накладной: {Id}.\tНаименование товара: {Name}.\tЦена за 1 единицу/кг: {Price} руб.\t Количество товара в наличии: {Amount}.");
-            
         }
 
         

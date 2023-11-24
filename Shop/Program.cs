@@ -31,11 +31,11 @@ namespace Shop
             BrefActive bref = new BrefActive();
         
             Goods[] gooods = { bref, apple};
-            foreach (Goods item in gooods)
+            foreach (Goods item in gooods) 
                 {
                 
-                    bref.MenuPrint();
                     apple.MenuPrint();
+                    bref.MenuPrint(); //не получается сделать так, чтобы срабатывало сразу два подряд товара( наверное нужны потоки)
                 }
                 
               

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
 namespace Shop
 {
     public abstract class Food : Goods
@@ -38,8 +38,9 @@ namespace Shop
         }
         public override void Print()
         {
+            
             base.Print();
-            Console.Write($" Тип продуктов питания: {TypeOfFood}.");
+            Console.Write($" Тип продуктов питания: {TypeOfFood}.");  
         }
 
 
