@@ -18,10 +18,14 @@ namespace Shop
             TypeOfChemicals = typeofchemicals;
             //Console.WriteLine("CConstructor:\t" + GetHashCode());
         }
+        public override void MenuPrint()
+        {
+            base.MenuPrint();
+        }
         public override void Coming()
         {
             base.Coming();
-            Console.WriteLine("\nВведите тип бытовой химии: ");
+            Console.Write("\nВведите тип бытовой химии: ");
             TypeOfChemicals = Console.ReadLine();
         }
         public override void Selling()

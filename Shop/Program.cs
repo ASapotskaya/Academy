@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace Shop
 {
@@ -13,7 +14,7 @@ namespace Shop
         static void Main(string[] args)
         {
             Console.Title = "Shop";
-            
+
             //Console.SetCursorPosition(35, 3);
             //Console.ForegroundColor = ConsoleColor.Magenta;
             //Console.WriteLine("Выберите операцию: ");
@@ -26,11 +27,15 @@ namespace Shop
             //Console.SetCursorPosition(35, 8);
             //Console.WriteLine("Клавиша Esc - выход из программы.");
             //Console.ResetColor();
-
-            Goods[] gooods = { new Apple(), new BrefActive()};
+            Apple apple = new Apple();
+            BrefActive bref = new BrefActive();
+        
+            Goods[] gooods = { bref, apple};
             foreach (Goods item in gooods)
                 {
-                   item.MenuPrint();
+                
+                    bref.MenuPrint();
+                    apple.MenuPrint();
                 }
                 
               

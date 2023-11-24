@@ -18,10 +18,14 @@ namespace Shop
             TypeOfFood = typeoffood;
             //Console.WriteLine("FConstructor:\t" + GetHashCode());
         }
+        public override void MenuPrint()
+        {
+            base.MenuPrint();
+        }
         public override void Coming()
         {
             base.Coming();
-            Console.WriteLine("\nВведите тип продуктов питания: ");
+            Console.Write("\nВведите тип продуктов питания: ");
             TypeOfFood = Console.ReadLine();
         }
         public override void Selling()

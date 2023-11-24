@@ -17,7 +17,12 @@ namespace Shop
             Variety = variety;
             //Console.WriteLine("AConstructor:\t" + GetHashCode());
         }
-        
+        public override void MenuPrint()
+        {
+           
+            base.MenuPrint();
+            
+        }
         public override void Coming()
         {
             Console.Clear();
@@ -27,7 +32,7 @@ namespace Shop
             Console.WriteLine("Поступление Яблок!");
             Console.ResetColor();
             base.Coming();
-            Console.WriteLine("\nВведите сорт яблок: ");
+            Console.Write("\nВведите сорт яблок: ");
             Variety = Console.ReadLine();
             Console.WriteLine("Вернуться в меню: клавиша M ");
         }
@@ -43,6 +48,7 @@ namespace Shop
         {
             base.Print();
             Console.Write($" Сорт: {Variety}.");
+            Console.WriteLine("Вернуться в меню: клавиша M ");
         }
     }
 }

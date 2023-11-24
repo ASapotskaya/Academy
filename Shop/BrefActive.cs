@@ -17,6 +17,12 @@ namespace Shop
             Area = area;
         }
        
+        public override void MenuPrint()
+        {
+            
+            base.MenuPrint();
+            
+        }
         public override void Coming()
         {
             Console.Clear();
@@ -26,7 +32,7 @@ namespace Shop
             Console.WriteLine("Поступление БрэфЭктив!");
             Console.ResetColor();
             base.Coming();
-            Console.WriteLine("\nВведите область применения Брэфа: ");
+            Console.Write("\nВведите область применения Брэфа: ");
             Area = Console.ReadLine();
             Console.WriteLine("Вернуться в меню: клавиша M ");
         }
@@ -42,7 +48,7 @@ namespace Shop
         {
             base.Print();
             Console.Write($" Область применения: {Area}.");
+            Console.WriteLine("Вернуться в меню: клавиша M ");
         }
-
     }
 }

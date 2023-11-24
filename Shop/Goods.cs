@@ -25,7 +25,7 @@ namespace Shop
             
            
             Console.SetCursorPosition(20, 3);
-            Console.WriteLine("\nВведите номер накладной: ");
+            Console.Write("\nВведите номер накладной: ");
                 Id = Convert.ToInt32(Console.ReadLine());
                 Console.Write("\nВведите наименование товара: ");
                 Name = Console.ReadLine();
@@ -37,20 +37,36 @@ namespace Shop
         }
         public virtual void Selling()
         {
+
             Console.Clear();
+            Console.SetCursorPosition(32, 1);
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            Console.WriteLine("Продажа товара!");
+            Console.ResetColor();
+            Console.SetCursorPosition(20, 3);
             Console.WriteLine("Введите количество товара на продажу: ");
             int amount1 = Convert.ToInt32(Console.ReadLine());
             if (amount1 > Amount) Console.WriteLine("Товара в таком количестве на складе нет.");
-            if (amount1 == 0) Console.WriteLine("Вы ничего не выбрали.");
             else
             {
-                Amount -= amount1;
+                if (amount1 == 0) Console.WriteLine("Вы ничего не выбрали.");
+                else
+                {
+                    Amount -= amount1;
+                    System.Threading.Thread.Sleep(500);
+                    Console.Beep();
+                    System.Threading.Thread.Sleep(1500);
+                    Console.WriteLine($"Сумма к оплате: {amount1 * Price}");
+                    System.Threading.Thread.Sleep(2000);
+                    Console.WriteLine($"Продажа прошла успешно. Остаток товара: {Amount} штук(а). Выручка: {amount1 * Price} руб.");
+                }
             }
-            Console.WriteLine($"Продажа прошла успешно. Остаток: {Amount} штук(а).");
             Console.WriteLine("Вернуться в меню: клавиша M ");
         }
 
-        internal void MenuPrint()
+        
+        public virtual void MenuPrint()
         {
             Console.Clear();
             Console.SetCursorPosition(32, 1);
@@ -87,21 +103,31 @@ namespace Shop
         public virtual void WriteOff()
         {
             Console.Clear();
+            Console.SetCursorPosition(32, 1);
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            Console.WriteLine("Списание товара!");
+            Console.ResetColor();
+            Console.SetCursorPosition(20, 3);
             Console.WriteLine("Введите количество товара на списание: ");
             int amount2 = Convert.ToInt32(Console.ReadLine());
             if (amount2 > Amount) Console.WriteLine("Товара в таком количестве на складе нет.");
-            if (amount2 == 0) Console.WriteLine("Вы ничего не выбрали.");
             else
             {
-                Amount -= amount2;
+                if (amount2 == 0) Console.WriteLine("Вы ничего не выбрали.");
+                else
+                {
+                    Amount -= amount2;
+                    Console.WriteLine($"Товар в количестве {amount2} единиц выбыл. Остаток: {Amount} единиц. Убыток: {amount2 * Price} руб.");
+                }
             }
             Console.WriteLine("Вернуться в меню: клавиша M ");
 
         }
          public virtual void Print()
         {
-            
-            Console.WriteLine($"Номер накладной: {Id}.\tНаименование товара: {Name}.\tЦена за 1 единицу/кг: {Price} руб.\t Количество товара в наличии: {Amount}.");
+            Console.Clear();
+            Console.Write($"Номер накладной: {Id}.\tНаименование товара: {Name}.\tЦена за 1 единицу/кг: {Price} руб.\t Количество товара в наличии: {Amount}.");
             
         }
 
