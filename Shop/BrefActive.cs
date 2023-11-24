@@ -48,7 +48,7 @@ namespace Shop
         {
             base.Print();
             Console.Write($" Область применения: {Area}.");
-            Console.WriteLine("Вернуться в меню: клавиша M ");
+            Console.WriteLine("\nВернуться в меню: клавиша M ");
         }
     }
 }
