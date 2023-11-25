@@ -29,8 +29,6 @@ namespace Shop
                 case 1: gooods[0].MenuPrint(); break;
                 case 2: gooods[1].MenuPrint(); break;
             }
-
-
         }
     }
 }

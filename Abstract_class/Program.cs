@@ -7,197 +7,179 @@ using static System.Console;
 
 namespace Abstract_class
 {
+    interface I1
+    {
+        string F1(int n);
+
+    }
+
+    interface I2
+    {
+        int F2(int n);
+        void F3();
+        string F1(int n);
+    }
+    //interface I3 :I1,I2
+    //{
+    //    void F4(int n);
+    //}
+
+    class MyClass : I1, I2
+    {
+         string I1.F1(int n)
+        {
+            return $"function_1 {n}";
+        }
+
+         string I2.F1(int n)
+        {
+            return $"function_2 {n}";
+        }
+        public int F2(int n)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void F3()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+
+    public interface IWorker
+    {
+        bool IsWorker { get; }
+        string Work();
+    }
+     interface IManager // не обязательно писать паблик, интерфейс сразу доступный
+    {
+        List<IWorker> List_wor { get; set; }
+        void Organize();
+        void MakeBudget();
+        void Control();
+
+    }
     public abstract class Human
     {
-        protected int id;
-        protected string firstName;
-        protected string lastName;
+        public int id { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
 
-         public Human (int _id, string fName, string lName)
+         
+        public override string ToString()
         {
-            id = _id;
-            firstName = fName;
-            lastName = lName;
+            return $"ID: {id} Фамилия: {lastName}\nИмя:{firstName}\n";
         }
-        public virtual void Print()
-        {
-            WriteLine($"ID: {id} Фамилия: {lastName}\nИмя:{firstName}\n");
-        }
-        //public abstract void Work();
-        //public abstract void Think();
+       
+        
     }
     public abstract class Employee : Human
     {
-        double Salary;
-        public Employee(int _id, string fName, string lName, double salary): base(_id, fName,lName)
-        {
-            Salary = salary;
-            
-        }
-        public override void Print()
-        {
-            base.Print();
-            WriteLine($"Заработная плата: {Salary} $");
-        }
+        public  double Salary { get; set; }
+        public  string Position { get; set; }
 
-       
         public override string ToString()
         {
-            
-            return $"ID: {id} Фамилия: {lastName}\nИмя:{firstName}\nЗаработная плата: {Salary} $";
+            return base.ToString() + $"\nДолжность: {Position}, Заработная плата: {Salary} $";
         }
-
-        public abstract void Work();
-        public abstract void Think();
     }
 
     
-class Manager : Employee
+class Director : Employee, IManager
+
+    
+    {
+        public List<IWorker> List_wor { get; set; }
+
+        public void Control()
+        {
+            Console.WriteLine("Контролирую работу");
+        }
+
+        public void MakeBudget()
+        {
+            Console.WriteLine("Формирую бюджет");
+        }
+
+        public void Organize()
+        {
+            Console.WriteLine("Организую работу");
+        }
+
+       
+    }
+
+    class Cashier : Employee, IWorker
 
     {
+        bool isWorker = true;
+        public bool IsWorker { get { return isWorker; } }
 
-        string _fieldActivity;
-
-        public Manager(int _id,  string fName, string lName, double salary, string activity) : base(_id, fName, lName, salary)
-
+        
+        public string Work()
         {
-
-            _fieldActivity = activity;
-
-        }
-
-        public override void Print()
-
-        {
-            base.Print();
-            WriteLine($"Менеджер. Сфера деятельности:{_fieldActivity}");
-
-        }
-
-        public override void Think()
-        {
-
-            Console.WriteLine("Манагер думает");
-        }
-
-        public override void Work()
-        {
-
-            Console.WriteLine("манагер работает");
+            return $"Принимаю оплату за товар";
         }
     }
 
-    class Scientist : Employee
+    class Storekeeper : Employee, IWorker
 
     {
+        bool isWorker = true;
+        public bool IsWorker { get { return isWorker; } }
 
-        string _scientificDirection;
 
-        public Scientist(int _id, string fName, string lName,  double salary, string direction) : base(_id, fName, lName,  salary)
-
+        public string Work()
         {
-
-            _scientificDirection = direction;
-
-        }
-
-        public override void Print()
-
-        {
-            base.Print();
-            WriteLine($"Ученый. Научное направление: {_scientificDirection}");
-        }
-
-        public override void Think()
-        {
-            Console.WriteLine("Науч работник думает");
-        }
-
-        public override void Work()
-        {
-            Console.WriteLine("Научный работник работает");
+            return $"Учет и прием товара";
         }
     }
 
-    class Specialist : Employee
+    class Seller : Employee, IWorker
 
     {
+        bool isWorker = true;
+        public bool IsWorker { get { return isWorker; } }
 
-        string _qualification;
 
-        public Specialist(int _id, string fName, string lName, double salary, string qualification) : base(_id, fName, lName, salary)
-
+        public string Work()
         {
-
-            _qualification = qualification;
-
-        }
-
-        public override void Print()
-
-        {
-            base.Print();
-            WriteLine($"Специалист. Квалификация: { _qualification}");
-
-        }
-
-        public override void Think()
-        {
-            Console.WriteLine("Специалист думает");
-        }
-
-        public override void Work()
-        {
-            Console.WriteLine("Специалист работает");
+            return $"Продает товар";
         }
     }
-
     class Program
-
     {
-
         static void Main(string[] args)
 
         {
-
-            Employee manager = new Manager(3,"John", "Doe",  3500, "продукты питания");
-
-            Employee[] employees = { manager,
-
-                                           new Scientist(4,"Jim", "Beam", 4253, "история"),
-
-                                           new Specialist(5,"Jack", "Smith", 2587.43,"физика")
-
-    };
-
-            foreach (Employee item in employees)
-
+            Director boss = new Director { id = 1, lastName = "LD", firstName = "FD", Position = "Director", Salary = 12000 };
+            IWorker seller = new Seller { id = 2, lastName = "Ls", firstName = "Fs", Position = "Seller", Salary = 6000 };
+            boss.List_wor = new List<IWorker>
             {
+                seller, new Cashier{id = 3, lastName = "Lc", firstName = "Fc", Position = "Cashier", Salary = 8000},
+                new Storekeeper{id = 4, lastName = "Lst", firstName = "Fst", Position = "Storekeeper", Salary = 10000}
+            };
 
-                item.Print();
-                item.Think();
-                item.Work();
-                //item.ShowScientist(); Error
-                //try
-                //{
-                //    ((Specialist)item).
-                //    ShowSpecialist(); // Способ №1
-                //}
-                //catch
-                //{
-                //}
-                //Scientist scientist = item as Scientist; // Способ №2
-                //if (scientist != null)
-                //{
-                //    scientist.ShowScientist();
-                //}
-                //if (item is Manager) // Способ №3
-                //{
-                //    (item as Manager).ShowManager();
-                //}
+            //is as
 
+            if (seller is Employee) Console.WriteLine($"Заработная плата : {(seller as Employee).Salary}");
+            Console.WriteLine(boss);
+            if (boss is IManager) boss.MakeBudget();
+            foreach (IWorker item in boss.List_wor)
+            {
+                Console.WriteLine(item);
+                if (item.IsWorker) Console.WriteLine(item.Work());
+                Console.WriteLine();
             }
 
+            MyClass obj = new MyClass();
+            Console.WriteLine(((I1)obj).F1(10));
+
+            
+            I2 i2 = new MyClass();
+            Console.WriteLine(i2.F1(6)); 
         }
 
     }
