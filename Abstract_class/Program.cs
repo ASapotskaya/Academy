@@ -70,7 +70,7 @@ namespace Abstract_class
          
         public override string ToString()
         {
-            return $"ID: {id} Фамилия: {lastName}\nИмя:{firstName}\n";
+            return $"ID: {id} Фамилия: {lastName} Имя:{firstName}\n";
         }
        
         
@@ -82,7 +82,7 @@ namespace Abstract_class
 
         public override string ToString()
         {
-            return base.ToString() + $"\nДолжность: {Position}, Заработная плата: {Salary} $";
+            return base.ToString() + $" Должность: {Position}, Заработная плата: {Salary} $";
         }
     }
 
