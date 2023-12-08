@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Standart_interface
 {
-    class Student:IComparable
+    class Student:IComparable, ICloneable
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -14,6 +14,17 @@ namespace Standart_interface
         public DateTime BD { get; set; }
 
         public StudCard Card { get; set; }
+
+        public object Clone()
+        {
+            Student temp = (Student)this.MemberwiseClone();
+            temp.Card = new StudCard
+            {
+                Seria = this.Card.Seria,
+                Number = this.Card.Number
+            };
+            return temp;
+        }
 
         public int CompareTo(object obj)
         {

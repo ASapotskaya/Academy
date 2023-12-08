@@ -8,8 +8,8 @@ namespace Shop
 {
     public abstract class Food : Goods
     {
-        protected string TypeOfFood { get; set; }
-        public List<IGoods> List_goods { get; set; }
+        public string TypeOfFood { get; set; }
+        //public List<IGoods> List_goods { get; set; }
 
        
         

@@ -10,7 +10,7 @@ namespace Shop
     {
         string Area { get; set; }
 
-        public List<IGoods> List_goods { get; set; }
+       // public List<IGoods> List_goods { get; set; }
         
        
         void IGoods.Coming()

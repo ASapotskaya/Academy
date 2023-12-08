@@ -8,10 +8,10 @@ namespace Shop
 {
     public abstract class Goods
     {
-        protected int Id { get; set; }
-        protected string Name { get; set; }
-        protected double Price { get; set; }
-        protected int Amount { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
+        public int Amount { get; set; }
 
         public virtual void Print()
         {
