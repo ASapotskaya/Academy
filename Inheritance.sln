@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event_Exam", "Event_Exam\Ev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopCompare", "ShopCompare\ShopCompare.csproj", "{404B0589-F0F8-4A3C-B32B-1CD66B3E1BDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zoo", "Zoo\Zoo.csproj", "{6F96A289-18E0-4644-8080-E62DCB9800FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{404B0589-F0F8-4A3C-B32B-1CD66B3E1BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{404B0589-F0F8-4A3C-B32B-1CD66B3E1BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{404B0589-F0F8-4A3C-B32B-1CD66B3E1BDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F96A289-18E0-4644-8080-E62DCB9800FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F96A289-18E0-4644-8080-E62DCB9800FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F96A289-18E0-4644-8080-E62DCB9800FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F96A289-18E0-4644-8080-E62DCB9800FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
